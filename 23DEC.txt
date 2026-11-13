@@ -1,0 +1,58 @@
+## Linux Command Line & File Management Notes
+
+### Directory & File Navigation
+
+* **`pwd`**: Prints the current working directory path (e.g., `/root/filesystem/home/ubuntu`).
+* **`cd <directory>`**: Changes the current directory. Use `cd ..` to move up one directory level.
+* **`ls`**: Lists files and folders in the current directory.
+* **`ls -l`**: Lists directory contents in a long format. The output's first character indicates the type: a `-` indicates a standard file, while a `d` indicates a directory.
+
+### File Creation, Viewing & Editing
+
+* **`touch <filename>`**: Creates an empty file (e.g., `touch file.txt`).
+* **`vim <filename>`**: Opens the file in the Vim text editor.
+* **`cat <filename>`**: Prints the entire content of a file to the terminal.
+* **`head <filename>`**: Prints the first 10 lines of a file by default. Use `head -n 2` to print only the first 2 lines.
+* **`tail <filename>`**: Prints the last 10 lines of a file by default. Use `tail -n 2` to print only the last 2 lines.
+* **`echo "text"`**: Prints the specified text string directly to the terminal.
+
+### Copying, Moving & Deleting
+
+* **`mkdir <directory>`**: Creates a new directory.
+* **`cp <source> <destination>`**: Copies a file to a new location.
+* **`mv <source> <destination>`**: Moves or renames a file.
+* **`rm <filename>`**: Removes (deletes) a file.
+* **`rm -r <directory>`**: Recursively removes a directory and all of its contents.
+
+### Output Redirection
+
+* **`>>` (Append)**: Appends the output of a command to the end of a file (e.g., `echo "text" >> demo.txt`).
+* **`>` (Overwrite)**: Overwrites the entire file content with the output of the command (e.g., `echo "text" > demo.txt`).
+
+### File Permissions (`chmod`)
+
+Linux permissions define who can access and modify files. They are assigned to three categories: **Owner**, **Group**, and **Other**. Permissions are represented both by letters and numeric (octal) values:
+
+* **Read (`r`)**: Octal value 4.
+
+
+* **Write or Edit (`w`)**: Octal value 2.
+
+
+* **Execute (`x`)**: Octal value 1.
+
+
+* **No Permission (`-`)**: Octal value 0.
+
+
+
+These values are added together to create an octal number from 0 to 7 representing a permission set. For example, `rwx` (Read + Write + Execute) equals 7 (4+2+1). `rw-` (Read + Write) equals 6 (4+2+0). `r-x` (Read + Execute) equals 5 (4+0+1).
+
+* **`chmod 777 <filename>`**: Grants read, write, and execute permissions to everyone (`rwxrwxrwx`). This makes the file executable (often turning the filename green in the terminal), but `777` is generally avoided in production environments for security reasons.
+* **Industry Standard Permissions**: `755` (`rwxr-xr-x`) for executables/directories and `644` (`rw-r--r--`) for standard files are preferred.
+
+### Process Management & Monitoring
+
+* **`ps -ef`**: Displays a static snapshot of all currently running processes on the system. `-e` selects all processes, and `-f` outputs the details in a full-format listing (including the user, PID, CPU usage, and the command that started the process).
+* **`top`**: Provides a dynamic, real-time, text-based view of running system processes, displaying CPU usage, memory consumption, and active tasks.
+* **`htop`**: An interactive, visually enhanced alternative to `top`. It allows you to scroll vertically and horizontally to see full command lines, supports mouse interaction, and color-codes metrics for easier reading.
